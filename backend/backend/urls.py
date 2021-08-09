@@ -20,6 +20,8 @@ from django.urls import include
 
 from django.views.generic import RedirectView
 
+admin.site.site_header = "UNAL-DNIL Directorio Convocatorias"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
