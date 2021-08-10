@@ -21,6 +21,9 @@ from django.urls import include
 from django.views.generic import RedirectView
 
 admin.site.site_header = "UNAL-DNIL Directorio Convocatorias"
+admin.site.site_title = "ADMINISTRACIÓN DIRECTORIO"
+admin.site.index_title = "BACKEND"
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,7 +35,8 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    path('', RedirectView.as_view(url='convocatorias/', permanent=True)),
+    #path('', RedirectView.as_view(url='convocatorias/', permanent=True)),
+    path('', RedirectView.as_view(url='admin/', permanent=True)),
 ]
 
 

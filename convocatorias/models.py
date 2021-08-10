@@ -1,9 +1,13 @@
 from django.db import models
 
+
+
 # Create your models here.
 class Entidad (models.Model):
     #Entidad Financiadora
+
     nombreEntidad = models.CharField(max_length=200, help_text='Nombre Entidad Financiadora Convocatoria')
+    paginaWeb = models.URLField(max_length=200,help_text='Página Web de la Entidad',null=True)
 
     def __str__(self):
         #String object model
@@ -12,10 +16,22 @@ class Entidad (models.Model):
     class Meta:
         verbose_name_plural = 'Entidades'
 
+class Contacto (models.Model):
+    cargoContacto = models.CharField(max_length=200, help_text='Cargo Contacto',null=True)
+    nombreContacto = models.CharField(max_length=200, help_text='Nombre Contacto')
+    correoContacto = models.EmailField(max_length=254, help_text='Correo Electrónico Contacto')
+    
+    entidadID = models.ForeignKey (Entidad,on_delete=models.PROTECT, null=True)
+
+    class Meta:
+        verbose_name_plural = 'Contactos Oficiales'
+
+
+
 class Convocatoria (models.Model):
     #Convocatoria
     #Una entidad puede tener 0 ... n Convocatorias asociadas
-    #entidadID = models.ForeignKey('Entidad', on_delete=models.PROTECT, null=True)
+    entidadID = models.ForeignKey('Entidad', on_delete=models.PROTECT, null=True, verbose_name="Entidad Otorgante")
     #Una entidad tiene 1 caracterizacion asociada
     #caracterizacionID = models.ForeignKey('Caracterizacion', null=True, blank=True, on_delete=models.RESTRICT)
     #caracterizacionID = models.OneToOneField (Caracterizacion,on_delete=models.PROTECT,null=True)
