@@ -19,10 +19,13 @@ from django.urls import path
 from django.urls import include
 
 from django.views.generic import RedirectView
+from django.views.generic import TemplateView
 
 admin.site.site_header = "UNAL-DNIL Directorio Convocatorias"
 admin.site.site_title = "ADMINISTRACIÓN DIRECTORIO"
 admin.site.index_title = "BACKEND"
+
+#from convocatorias.views import *
 
 
 urlpatterns = [
@@ -31,12 +34,13 @@ urlpatterns = [
 
 # url apps from project
 urlpatterns += [
-    path('convocatorias/', include('convocatorias.urls')),
+    path('', include('convocatorias.urls')),
+    #path('convocatorias/', include('convocatorias.urls')),
 ]
 
-urlpatterns += [
+#urlpatterns += [
     #path('', RedirectView.as_view(url='convocatorias/', permanent=True)),
-    path('', RedirectView.as_view(url='admin/', permanent=True)),
-]
+    #path('', RedirectView.as_view(url='admin/', permanent=True)),
+#]
 
 

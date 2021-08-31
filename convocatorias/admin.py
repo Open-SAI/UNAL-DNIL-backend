@@ -18,6 +18,13 @@ class CaracterizacionInline(admin.StackedInline):
 class ConvocatoriaAdmin(admin.ModelAdmin):
     inlines = [CaracterizacionInline]
 
+    readonly_fields= ['vigencia',]
+
+    class Meta:
+        ordering = ['fechaPublicacion']
+        verbose_name_plural = 'Registro de Convocatorias'
+
+
 @admin.register(Entidad)
 class EntidadAdmin(admin.ModelAdmin):
     inlines = [ContactoInline,]

@@ -29,7 +29,7 @@ class Contacto (models.Model):
 
 
 class Convocatoria (models.Model):
-    #Convocatoria
+    
     #Una entidad puede tener 0 ... n Convocatorias asociadas
     entidadID = models.ForeignKey('Entidad', on_delete=models.PROTECT, null=True, verbose_name="Entidad Otorgante")
     #Una entidad tiene 1 caracterizacion asociada
@@ -38,11 +38,25 @@ class Convocatoria (models.Model):
 
     tituloConvocatoria = models.CharField(max_length=500, help_text='Título de la Convocatoria')
     descripcion = models.TextField(max_length=2000, help_text='Resumen Convocatoria')
-    fechaPublicacion = models.DateField(null=True, blank=True, help_text='Fecha Publicación Convocatoria')
+    fechaPublicacion = models.DateField(null=True, help_text='Fecha Publicación Convocatoria')
+    fechaLimitePostulacion = models.DateField(null=True, help_text='Fecha Límite Postulación')
+    paginaWebAplicacion = models.URLField(max_length = 500, null=True, help_text='Página Web para aplicaciones')
 
-    class Meta:
-        ordering = ['fechaPublicacion']
-        verbose_name_plural = 'Registro de Convocatorias'
+    OP_VIGENCIA = (
+            ('False','No'),
+            ('True','Sí'),
+    )    
+    vigencia = models.BooleanField(
+            choices=OP_VIGENCIA,
+            default=True,
+            help_text='¿Se encuentra activa la convocatoria?',
+            editable=False,
+    )
+    
+
+#    class Meta:
+#        ordering = ['fechaPublicacion']
+#        verbose_name_plural = 'Registro de Convocatorias'
 
     def __str__(self):
         #String object model
@@ -51,6 +65,16 @@ class Convocatoria (models.Model):
     def get_absolute_url(self):
         #url access item
         return reverse('convocatoria-detail',args[str(self.id)])
+
+
+
+'''
+    def save(self):
+        if (present.date() < fechaLimitePostulacion):
+            return False
+        else:
+            return True
+'''
 
 #class Caracterizacion (models.Model):
 class Caracterizacion (models.Model):
@@ -61,6 +85,7 @@ class Caracterizacion (models.Model):
 
     tipoFinanciacion = models.CharField(max_length=500, help_text='¿Qué tipo de financiación aplica para la convocatoria?')
     montoBeneficio = models.CharField(max_length=500, help_text='¿Qué monto tiene la convocatoria?')
+    descripcionBeneficio = models.CharField(max_length=2000, help_text='Descripción Beneficio Otorgado',null=True)
 
     OP_PERIODICA = (
             ('no','No'),
@@ -101,9 +126,13 @@ class Caracterizacion (models.Model):
             help_text='¿cuál es el ámbito de la convocatoria?',
     )
     OP_AREAS_CONV = (
-            ('ocde','OCDE'),
-            ('ods','Objetivos ODS'),
-            ('na','no aplica'),
+            ('ciencias_naturales','Ciencias Naturales'),
+            ('ingenieria_tecnologia','Ingeniería y Tecnología'),
+            ('ciencias_salud','Ciencias Médicas y de Salud'),
+            ('ciencias_agricolas','Ciencias Agrícolas'),
+            ('ciencias_sociales','Ciencias Sociales'),
+            ('humanidades','Humanidades'),
+            ('multidisciplinarias','Multidisciplinarias'),
     )
     areasConvocatoria = models.CharField(
             max_length=30,
