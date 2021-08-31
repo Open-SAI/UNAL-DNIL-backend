@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-w)0vv9z(c2vuh09
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['unal-dnil-backend.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['unal-dnil.herokuapp.com','127.0.0.1']
 
 
 # Application definition
