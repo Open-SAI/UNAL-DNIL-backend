@@ -2,12 +2,24 @@
 {% block content %}
 <div class="breadcrumb-class">Está en:<a href="/" target="_self" title="Inicio">Inicio</a>/<span>convocatorias</span></div>
   <h1>CONVOCATORIAS VIGENTES</h1>
-  <p>Listado Convocatorias <em>UNAL-DNIL</em>!</p>
+<!--  <p>Listado Convocatorias <em>UNAL-DNIL</em>!</p>
   <h2>Consulta:</h2>
   <p>Convocatorias registradas:</p>
   <ul>
     <li><strong>Entidades:</strong> {{ num_entidades }}</li>
     <li><strong>Número convocatorias:</strong> {{ num_convocatorias }}</li>
   </ul>
+-->  
+  {% if lista_convocatorias %}
+  <ul>
+    {% for convocatoria in lista_convocatorias %}
+      <li>
+        <a href="{{ convocatoria.get_absolute_url }}">{{ convocatoria.tituloConvocatoria }}</a> ({{convocatoria.fechaPublicacion}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No hay convocatorias para mostrar.</p>
+  {% endif %} 
   
 {% endblock %}

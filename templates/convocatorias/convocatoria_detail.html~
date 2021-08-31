@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="breadcrumb-class">Está en:<a href="/" target="_self" title="Inicio">Inicio</a>/<a href="/convocatorias" target="_self" title="Convocatorias">Convocatorias</a>/<a href="{{ convocatoria.get_absolute_url }}">{{ convocatoria.tituloConvocatoria }}</a></div>
+  <h1>Convocatoria: {{ convocatoria.tituloConvocatoria }}</h1>
+
+  <p><strong>Entidad:</strong> <a href="">{{ convocatoria.entidadID }}</a></p>
+  <p><strong>Descripción:</strong> {{ convocatoria.descripcion }}</p>
+  <p><strong>Fecha Publicación:</strong> {{ convocatoria.fechaPublicacion }}</p>
+
+
+{% endblock %}

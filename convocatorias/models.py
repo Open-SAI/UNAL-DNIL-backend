@@ -1,6 +1,6 @@
 from django.db import models
-
-
+from django.urls import reverse
+#from django.core.urlresolvers import reverse
 
 # Create your models here.
 class Entidad (models.Model):
@@ -28,8 +28,7 @@ class Contacto (models.Model):
 
 
 
-class Convocatoria (models.Model):
-    
+class Convocatoria (models.Model):   
     #Una entidad puede tener 0 ... n Convocatorias asociadas
     entidadID = models.ForeignKey('Entidad', on_delete=models.PROTECT, null=True, verbose_name="Entidad Otorgante")
     #Una entidad tiene 1 caracterizacion asociada
@@ -60,11 +59,12 @@ class Convocatoria (models.Model):
 
     def __str__(self):
         #String object model
-        return self.tituloConvocatoria
+        return f'{self.tituloConvocatoria},'
     
     def get_absolute_url(self):
         #url access item
-        return reverse('convocatoria-detail',args[str(self.id)])
+        #return reverse('convocatoria-detail',args[str(self.id)])
+        return reverse('convocatoria-detail',args=[str(self.id)])
 
 
 

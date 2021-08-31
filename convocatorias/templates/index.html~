@@ -203,28 +203,28 @@
           <div class="btn btn-default dropdown-toggle" data-toggle="dropdown">SIUN<span class="caret"></span></div>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="/">Editorial UNAL</a>
+              <a class="dropdown-item" href="#">Editorial UNAL</a>
             </li>
             <li>
-              <a class="dropdown-item" href="/">Extensión UNAL</a>
+              <a class="dropdown-item" href="#">Extensión UNAL</a>
             </li>
             <li>
-              <a class="dropdown-item" href="/">Innovación UNAL</a>
+              <a class="dropdown-item" href="#">Innovación UNAL</a>
             </li>
             <li>
-              <a class="dropdown-item" href="/">Investigación UNAL</a>
+              <a class="dropdown-item" href="#">Investigación UNAL</a>
             </li>
             <li>
-              <a class="dropdown-item" href="/">Laboratorios UNAL</a>
+              <a class="dropdown-item" href="#">Laboratorios UNAL</a>
             </li>
             <li>
-              <a class="dropdown-item" href="/">Propiedad Intelectual UNAL</a>
+              <a class="dropdown-item" href="#">Propiedad Intelectual UNAL</a>
             </li>
             <li>
-              <a class="dropdown-item" href="/">Escuela de Pensamiento UNAL</a>
+              <a class="dropdown-item" href="#">Escuela de Pensamiento UNAL</a>
             </li>
             <li>
-              <a class="dropdown-item" href="/">VRi UNAL</a>
+              <a class="dropdown-item" href="#">VRi UNAL</a>
             </li>
           </ul>
         </div>
@@ -232,16 +232,16 @@
           <a href="convocatorias/" class="btn btn-default">CONVOCATORIAS</a>
         </div>
         <div class="btn-group">
-          <a href="/" class="btn btn-default">SERVICIOS</a>
+          <a href="index.html#" class="btn btn-default">SERVICIOS</a>
         </div>
         <div class="btn-group">
-          <a href="/" class="btn btn-default">HERMES</a>
+          <a href="index.html#" class="btn btn-default">HERMES</a>
         </div>
         <div class="btn-group">
-          <a href="/" class="btn btn-default">BOLETÍN SIUN</a>
+          <a href="index.html#" class="btn btn-default">BOLETÍN SIUN</a>
         </div>
         <div class="btn-group">
-          <a href="/" class="btn btn-default">ACERCA INVESTIGACIÓN UNAL</a>
+          <a href="index.html#" class="btn btn-default">ACERCA INVESTIGACIÓN UNAL</a>
         </div>                                
         <!-- Sedes -->
         <div class="btn-group menu_sedes">
