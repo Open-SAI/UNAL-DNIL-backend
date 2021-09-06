@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'convocatorias.apps.ConvocatoriasConfig',
     'reset_migrations',
+    'taggit',
+    'taggit_labels',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -146,3 +149,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / 'media'

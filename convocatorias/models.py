@@ -1,70 +1,83 @@
 from django.db import models
 from django.urls import reverse
+from django_countries.fields import CountryField
+from taggit.managers import TaggableManager
 #from django.core.urlresolvers import reverse
 
 # Create your models here.
 class Entidad (models.Model):
     #Entidad Financiadora
 
+    entidadID = models.AutoField(primary_key=True)
     nombreEntidad = models.CharField(max_length=200, help_text='Nombre Entidad Financiadora Convocatoria')
     paginaWeb = models.URLField(max_length=200,help_text='Página Web de la Entidad',null=True)
+    pais = CountryField(blank_label='Seleccione el país')
+    logoEntidad = models.ImageField(upload_to='entidad_logos', null=True)
 
     def __str__(self):
         #String object model
         return self.nombreEntidad
 
     class Meta:
-        verbose_name_plural = 'Entidades'
+        verbose_name_plural = 'Directorio de Entidades'
+
 
 class Contacto (models.Model):
+
+    entidadID = models.ForeignKey (Entidad,on_delete=models.CASCADE)
+
+    contactoID = models.AutoField(primary_key=True)
     cargoContacto = models.CharField(max_length=200, help_text='Cargo Contacto',null=True)
     nombreContacto = models.CharField(max_length=200, help_text='Nombre Contacto')
     correoContacto = models.EmailField(max_length=254, help_text='Correo Electrónico Contacto')
-    
-    entidadID = models.ForeignKey (Entidad,on_delete=models.PROTECT, null=True)
+    telefonoContacto = models.CharField(max_length=200, null=True, help_text='Teléfono de Contacto')
+    telefonoContactoAux = models.CharField(max_length=200, null=True, blank=True, help_text='Teléfono de Contacto Auxiliar')
 
     class Meta:
         verbose_name_plural = 'Contactos Oficiales'
 
-
-
-class Convocatoria (models.Model):   
+class Convocatoria (models.Model):
     #Una entidad puede tener 0 ... n Convocatorias asociadas
     entidadID = models.ForeignKey('Entidad', on_delete=models.PROTECT, null=True, verbose_name="Entidad Otorgante")
     #Una entidad tiene 1 caracterizacion asociada
     #caracterizacionID = models.ForeignKey('Caracterizacion', null=True, blank=True, on_delete=models.RESTRICT)
     #caracterizacionID = models.OneToOneField (Caracterizacion,on_delete=models.PROTECT,null=True)
 
+    convocatoriaID = models.AutoField(primary_key=True)
     tituloConvocatoria = models.CharField(max_length=500, help_text='Título de la Convocatoria')
     descripcion = models.TextField(max_length=2000, help_text='Resumen Convocatoria')
     fechaPublicacion = models.DateField(null=True, help_text='Fecha Publicación Convocatoria')
     fechaLimitePostulacion = models.DateField(null=True, help_text='Fecha Límite Postulación')
     paginaWebAplicacion = models.URLField(max_length = 500, null=True, help_text='Página Web para aplicaciones')
 
+
     OP_VIGENCIA = (
             ('False','No'),
             ('True','Sí'),
-    )    
+    )
     vigencia = models.BooleanField(
             choices=OP_VIGENCIA,
             default=True,
             help_text='¿Se encuentra activa la convocatoria?',
             editable=False,
     )
-    
 
-#    class Meta:
+    tags = TaggableManager()
+
+
+    class Meta:
 #        ordering = ['fechaPublicacion']
-#        verbose_name_plural = 'Registro de Convocatorias'
+        verbose_name_plural = 'Registro de Convocatorias'
+#       verbose_name = 'Registro de Convocatorias'
 
     def __str__(self):
         #String object model
-        return f'{self.tituloConvocatoria},'
-    
+        return f'{self.tituloConvocatoria}'
+
     def get_absolute_url(self):
         #url access item
         #return reverse('convocatoria-detail',args[str(self.id)])
-        return reverse('convocatoria-detail',args=[str(self.id)])
+        return reverse('convocatoria-detail',args=[str(self.convocatoriaID)])
 
 
 
@@ -141,8 +154,6 @@ class Caracterizacion (models.Model):
             default='na',
             help_text='¿áreas de la convocatoria?',
     )
-    
+
     #def __id__(self):
     #    return self.id
-
-

@@ -1,0 +1,76 @@
+.convocatoriaITEMLIST img {
+    width: 200px;
+    margin-bottom: 1em;
+}
+.convocatoriaITEMLIST .btn {
+    margin:1em;
+    float: right;
+}
+.convocatoriaITEMLIST span {
+  font-weight: bold;
+
+}
+.convocatoriaITEMLIST span::before{
+  content: "\f073";
+  font-family: 'Font Awesome\ 5 Free';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 18px;
+  padding-right: 0.2em;
+}
+.convocatoriaITEMLIST{
+  background: white;
+  margin: 1em;
+  padding: 1em;
+  border: solid 1px gray;
+  float: left;
+}
+.convocatoriaITEM{
+  background: white;
+  padding: 2em;
+  height: auto;
+  float: left;
+  margin: 1em;
+  border: solid 1px gray;
+}
+.convocatoriaITEM h3{
+  margin-bottom: 1em;
+}
+.convocatoriaITEM strong{
+  margin-right: 2em;
+}
+.convocatoriaITEM li{
+  padding: 1em;
+}
+.convocatoriaITEM #datePub::before {
+  content: "\f073";
+  font-family: 'Font Awesome\ 5 Free';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: green;
+  font-size: 18px;
+  padding-right: 0.2em;
+}
+.convocatoriaITEM #dateEnd::before {
+  content: "\f073";
+  font-family: 'Font Awesome\ 5 Free';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: red;
+  font-size: 18px;
+  padding-right: 0.2em;
+}
+
+.convocatoriaITEM #datePub,
+.convocatoriaITEM #dateEnd {
+  font-weight: bold;
+  margin-right: 2em;
+}
+
+.convocatoriaITEM #btnApp {
+
+}
+
+.convocatoriaITEM #btnHermes {
+
+}

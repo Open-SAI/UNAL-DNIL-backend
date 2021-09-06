@@ -21,6 +21,9 @@ from django.urls import include
 from django.views.generic import RedirectView
 from django.views.generic import TemplateView
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 admin.site.site_header = "UNAL-DNIL Directorio Convocatorias"
 admin.site.site_title = "ADMINISTRACIÓN DIRECTORIO"
 admin.site.index_title = "BACKEND"
@@ -43,4 +46,5 @@ urlpatterns += [
     #path('', RedirectView.as_view(url='admin/', permanent=True)),
 #]
 
-
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

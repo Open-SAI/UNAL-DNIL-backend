@@ -2,16 +2,53 @@
 {% block content %}
 <div class="breadcrumb-class">Está en:<a href="/" target="_self" title="Inicio">Inicio</a>/<span>convocatorias</span></div>
   <h1>CONVOCATORIAS VIGENTES</h1>
+  <form action="" method="get">
+    {{ filter.form.entidadID }}
+    <input type="submit" />
+  </form>
+  <ul>
+  {% for obj in filter.qs %}
+  <div class="convocatoriaITEMLIST">
+    <li>
+      <a href="{{ obj.get_absolute_url }}"><h3>{{ obj.tituloConvocatoria }}</h3></a>
+    </li>
+    <li>
+      <img src="{{ obj.entidadID.logoEntidad.url }}">
+    </li>
+    <li>
+      <span> {{obj.fechaPublicacion}}</span>
+    </li>
+    <li>
+       <a href="{{ obj.get_absolute_url }}" class="btn btn-primary btn-sm" role="button">ver más</a>
+    </li>
+    </div>
+  {% endfor %}
+  </ul>
+<!--
   {% if lista_convocatorias %}
+
   <ul>
     {% for convocatoria in lista_convocatorias %}
+    <div class="convocatoriaITEM">
       <li>
-        <a href="{{ convocatoria.get_absolute_url }}">{{ convocatoria.tituloConvocatoria }}</a> ({{convocatoria.fechaPublicacion}})
+        <a href="{{ convocatoria.get_absolute_url }}"><h3>{{ convocatoria.tituloConvocatoria }}</h3></a>
       </li>
+      <li>
+        <img src="{{ convocatoria.entidadID.logoEntidad.url }}">
+      </li>
+      <li>
+        <i class="fa fa-calendar" aria-hidden="true"></i>Publicación: {{convocatoria.fechaPublicacion}}
+      </li>
+      <li>
+         <a href="{{ convocatoria.get_absolute_url }}" class="btn btn-primary btn-sm" role="button">ver más</a>
+      </li>
+      </div>
     {% endfor %}
   </ul>
+
   {% else %}
     <p>No hay convocatorias para mostrar.</p>
-  {% endif %} 
-  
+  {% endif %}
+-->
+
 {% endblock %}

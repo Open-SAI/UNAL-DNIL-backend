@@ -38,6 +38,8 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/phone.css' %}" media="all">
   <link rel="stylesheet" type="text/css" href="{% static 'css/small.css' %}" media="all">
   <link rel="stylesheet" type="text/css" href="{% static 'css/printer.css' %}" media="print">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/dnil.css' %}" media="all">
+  <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
 
   <script src="{% static 'js/jquery.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/unal.js' %}" type="text/javascript"></script>
@@ -203,28 +205,28 @@
           <div class="btn btn-default dropdown-toggle" data-toggle="dropdown">SIUN<span class="caret"></span></div>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="#">Editorial UNAL</a>
+              <a class="dropdown-item" href="/">Editorial UNAL</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Extensión UNAL</a>
+              <a class="dropdown-item" href="/">Extensión UNAL</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Innovación UNAL</a>
+              <a class="dropdown-item" href="/">Innovación UNAL</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Investigación UNAL</a>
+              <a class="dropdown-item" href="/">Investigación UNAL</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Laboratorios UNAL</a>
+              <a class="dropdown-item" href="/">Laboratorios UNAL</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Propiedad Intelectual UNAL</a>
+              <a class="dropdown-item" href="/">Propiedad Intelectual UNAL</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Escuela de Pensamiento UNAL</a>
+              <a class="dropdown-item" href="/">Escuela de Pensamiento UNAL</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">VRi UNAL</a>
+              <a class="dropdown-item" href="/">VRi UNAL</a>
             </li>
           </ul>
         </div>
@@ -232,17 +234,17 @@
           <a href="convocatorias/" class="btn btn-default">CONVOCATORIAS</a>
         </div>
         <div class="btn-group">
-          <a href="index.html#" class="btn btn-default">SERVICIOS</a>
+          <a href="/" class="btn btn-default">SERVICIOS</a>
         </div>
         <div class="btn-group">
-          <a href="index.html#" class="btn btn-default">HERMES</a>
+          <a href="/" class="btn btn-default">HERMES</a>
         </div>
         <div class="btn-group">
-          <a href="index.html#" class="btn btn-default">BOLETÍN SIUN</a>
+          <a href="/" class="btn btn-default">BOLETÍN SIUN</a>
         </div>
         <div class="btn-group">
-          <a href="index.html#" class="btn btn-default">ACERCA INVESTIGACIÓN UNAL</a>
-        </div>                                
+          <a href="/" class="btn btn-default">ACERCA INVESTIGACIÓN UNAL</a>
+        </div>
         <!-- Sedes -->
         <div class="btn-group menu_sedes">
           <div class="btn btn-default dropdown-toggle" data-toggle="dropdown">Sedes<span class="caret"></span></div>
@@ -454,7 +456,7 @@
   <!-- Contenido -->
   <main class="detalle">
 	 {% block content %}
-	  <div class="breadcrumb-class">Está en:<a href="/" target="_self" title="Inicio">Inicio</a></div>	 
+	  <div class="breadcrumb-class">Está en:<a href="/" target="_self" title="Inicio">Inicio</a></div>
 	 {% endblock %}
 
   </main>
