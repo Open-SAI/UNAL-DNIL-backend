@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+<div class="breadcrumb-class">Está en:<a href="/" target="_self" title="Inicio">Inicio</a>/
+  <a href="/convocatorias" target="_self" title="Convocatorias">Convocatorias</a>/
+  <span>Enviar</span></div>
+
+  <h1>ENVIAR CONVOCATORIA</h1>
+
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Enviar Convocatoria</button>
+{% endblock %}

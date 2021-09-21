@@ -1,0 +1,131 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="breadcrumb-class">Está en:<a href="/" target="_self" title="Inicio">Inicio</a>/<span>convocatorias</span></div>
+  <h1>CONVOCATORIAS VIGENTES</h1>
+
+<!--
+  {% if lista_convocatorias %}
+
+  <ul>
+    {% for convocatoria in lista_convocatorias %}
+    <div class="convocatoriaITEM">
+      <li>
+        <a href="{{ convocatoria.get_absolute_url }}"><h3>{{ convocatoria.tituloConvocatoria }}</h3></a>
+      </li>
+      <li>
+        <img src="{{ convocatoria.entidadID.logoEntidad.url }}">
+      </li>
+      <li>
+        <i class="fa fa-calendar" aria-hidden="true"></i>Publicación: {{convocatoria.fechaPublicacion}}
+      </li>
+      <li>
+         <a href="{{ convocatoria.get_absolute_url }}" class="btn btn-primary btn-sm" role="button">ver más</a>
+      </li>
+      </div>
+    {% endfor %}
+  </ul>
+
+  {% else %}
+    <p>No hay convocatorias para mostrar.</p>
+  {% endif %}
+-->
+
+<div class="container mt-4"><!--container-->
+  <!--<div class="row p-5 align-items-start">-->
+  <div class="row">
+
+    <!--<div id="menuFiltros" class="p-2 rounded-lg bg-dark text-white ">-->
+    <div class="col-md-3 p-4 rounded-lg bg-dark text-white ">
+
+
+        <!--<input  type="text" placeholder="Buscar...">-->
+
+
+        <!--<div class="input-group">
+          <div class="form-outline">
+            <form action="{% url 'convocatorias' %}" method="get">
+              <input name="q" type="search" id="inputFormConvocatorias" class="form-control" />
+              <label class="form-label" for="form1">Buscar...</label>
+            </form>
+          </div>
+          <button type="button" class="btn btn-primary">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>-->
+
+        <!--<nav class="navbar navbar-light bg-light">-->
+          <form action="{% url 'convocatorias' %}" method="get" class="form-inline">
+            <input name="q" class="form-control mr-sm-2" type="search" placeholder="Título, Descripción" aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+          </form>
+        <!--</nav>-->
+
+
+
+      <form id="formFiltros" class="p-2" action="" method="get">
+        <p>Filtrar por entidad</p>
+        {{ filter.form.entidadID }}
+        <input id="entFiltr" class="btn btn-success" type="submit" value="Filtrar"/>
+      </form>
+      <ul>
+        <li>
+          <a href="/convocatorias/filtrar/" target="_self"">Limpiar Filtros</a>
+        </li>
+      </ul>
+    </div>
+
+
+    <!--<div class="w-75 container-fluid bg-light  align-baseline">-->
+    <!--<div class="col-container bg-light rounded-lg align-baseline ">-->
+    <!--<div class="container mt-3 bg-light rounded-lg align-baseline ">-->
+    <div class="col-md-9 p-4 container bg-light rounded-lg">
+      {% if messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <ul>
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </ul>
+      </div>
+      {% endif %}
+
+      <div class="row">
+
+      {% for obj in filter.qs %}
+
+        <!--<div class="d-inline-block align-items-start w-30 convocatoriaITEMLIST">-->
+        <!--<div class="col-lg-4">-->
+        <div class="col-lg-4">
+          <div class="convocatoriaITEMLIST">
+            <ul>
+              <li><i style="color: #1f5080;" class="fa fa-lemon"></i></li>
+              <li><a href="{{ obj.get_absolute_url }}"><h4>{{ obj.tituloConvocatoria }}</h4></a></li>
+              <!--<img src="{{ obj.entidadID.logoEntidad.url }}">-->
+              <!--{{obj.iconoID.iconoTematico}}-->
+              <!--{{obj.iconoID.iconoTematico.icon_html}}-->
+              <!--<i class="{{obj.iconoID.iconoTematico.style_code}} {{obj.iconoID.iconoTematico.icon}} {{obj.iconoID.iconoTematico.extra}}" data-icon="{{obj.iconoID.iconoTematico}}"></i>-->
+              <!--<img src="{{ obj.iconoID.iconoTem.url }}">-->
+
+              <li><span class="datePub">{{obj.fechaPublicacion}}</span></li>
+              <li><a href="{{ obj.get_absolute_url }}" class="btn btn-primary btn-sm" role="button">ver más</a></li>
+            </ul>
+          </div>
+        </div>
+
+      {% endfor %}
+        </div>
+
+
+
+
+    </div>
+
+  </div>
+
+  </div>
+<!--container-->
+
+{% endblock %}

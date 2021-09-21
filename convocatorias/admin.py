@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Entidad, Convocatoria, Caracterizacion, Contacto
+from .models import Entidad, Convocatoria, Caracterizacion, Contacto, Icono, AreasOCDE, Componente, Elegibilidad
 
 #admin.site.register(Entidad)
 #admin.site.register(Convocatoria)
@@ -13,14 +13,37 @@ class ContactoInline(admin.StackedInline):
 
 class CaracterizacionInline(admin.StackedInline):
     model = Caracterizacion
+    extra = 0
+
+@admin.register(Icono)
+class IconoInline(admin.ModelAdmin):
+    model = Icono
+    extra = 0
+
+@admin.register(AreasOCDE)
+class AreasOCDEInline(admin.ModelAdmin):
+    model = AreasOCDE
+    extra = 0
+
+    list_display=['area']
+
+@admin.register(Componente)
+class ComponenteInline(admin.ModelAdmin):
+    model = Componente
+    extra = 0
+
+@admin.register(Elegibilidad)
+class ElegibilidadInline(admin.ModelAdmin):
+    model = Elegibilidad
+    extra = 0
 
 @admin.register(Convocatoria)
 class ConvocatoriaAdmin(admin.ModelAdmin):
     inlines = [CaracterizacionInline]
 
-    readonly_fields= ['vigencia',]
+#    readonly_fields= ['vigencia',]
 
-    list_display=['tituloConvocatoria','get_tags']
+    list_display=['tituloConvocatoria', 'estadoConvocatoria']
 
 #    def get_name(self, obj):
 #        return obj.author.name

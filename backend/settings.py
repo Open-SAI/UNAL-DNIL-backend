@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'taggit',
     'taggit_labels',
     'django_filters',
+    'crispy_forms',
+    'django_countries',
 ]
 
 MIDDLEWARE = [
@@ -152,3 +154,4 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / 'media'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

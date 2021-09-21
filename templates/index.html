@@ -9,8 +9,10 @@
 <!--<![endif]-->
 
 <head>
-  <meta charset="utf-8">
   {% load static %}
+
+  <meta charset="utf-8">
+
   <!--
   =============================================================================
   === PLANTILLA DESARROLLADA POR LA OFICINA DE MEDIOS DIGITALES - UNIMEDIOS ===
@@ -38,8 +40,11 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/phone.css' %}" media="all">
   <link rel="stylesheet" type="text/css" href="{% static 'css/small.css' %}" media="all">
   <link rel="stylesheet" type="text/css" href="{% static 'css/printer.css' %}" media="print">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/dnil.css' %}" media="all">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/dnil.css?' %}{% now "U" %}" media="all">
   <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'flags/sprite-hq.css' %}">
+
+
 
   <script src="{% static 'js/jquery.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/unal.js' %}" type="text/javascript"></script>
@@ -231,7 +236,7 @@
           </ul>
         </div>
         <div class="btn-group">
-          <a href="convocatorias/" class="btn btn-default">CONVOCATORIAS</a>
+          <a href="/convocatorias" class="btn btn-default">CONVOCATORIAS</a>
         </div>
         <div class="btn-group">
           <a href="/" class="btn btn-default">SERVICIOS</a>

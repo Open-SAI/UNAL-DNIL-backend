@@ -1,17 +1,27 @@
 {% extends "index.html" %}
 
 {% block content %}
-<div class="breadcrumb-class">Está en:<a href="/" target="_self" title="Inicio">Inicio</a>/<a href="/convocatorias" target="_self" title="Convocatorias">Convocatorias</a>/<a href="{{ convocatoria.get_absolute_url }}">{{ convocatoria.tituloConvocatoria }}</a></div>
+<div class="breadcrumb-class">Está en:<a href="/" target="_self" title="Inicio">Inicio</a>/<a href="/convocatorias" target="_self" title="Convocatorias">Convocatorias</a>/<span>{{ convocatoria.tituloConvocatoria }}</span></div>
 <ul>
 <div class="convocatoriaITEM">
   <li><h3>{{ convocatoria.tituloConvocatoria }}</h3></li>
-  <li><strong>Entidad:</strong> <a href="{{ convocatoria.entidadID.paginaWeb }}" target="_blank">{{ convocatoria.entidadID.nombreEntidad }}</a></li>
-  <li><strong>Descripción:</strong> {{ convocatoria.descripcion }}</li>
-  <li><span id="datePub">Fecha Publicación:</span>{{ convocatoria.fechaPublicacion }}</li>
-  <li><span id="dateEnd">Fecha Límite Postulación:</span> {{ convocatoria.fechaLimitePostulacion }}</li>
+  <li><span id="endidadDetail">Entidad:</span> <a href="{{ convocatoria.entidadID.paginaWeb }}" target="_blank">{{ convocatoria.entidadID.nombreEntidad }}</a></li>
+  {% if convocatoria.imageRedes %}
+    <li><img  id="imageRedesDetail"src="{{ convocatoria.imageRedes.url }}"></li>
+  {% endif %}
+  <li><span id="descripDetail">Descripción:</span> {{ convocatoria.descripcion }}</li>
+  <li><span id="datePubDetail">Fecha Publicación:</span>{{ convocatoria.fechaPublicacion }}</li>
+  <li><span id="dateEndDetail">Fecha Límite Postulación:</span> {{ convocatoria.fechaLimitePostulacion }}</li>
+  <li><span id="vigenciaDetail">Estado de la Convocatoria:</span> {{ convocatoria.get_vigencia_display }}</li>
+  <li><span id="paisDetail">País:</span><img src="{{ convocatoria.entidadID.pais.flag }}" >  {{ convocatoria.entidadID.pais.name }} </li>
+  <li><span id="entidadDetail">Entidad Financiadora:</span> {{ convocatoria.entidadID }}</li>
+  <li><span id="dirigidaDetail">Dirigida a:</span>{{ convocatoria.get_elegibilidad_values }}</li>
+  <li><span id="componentesDetail">Componentes:</span>{{ convocatoria.get_componentes_values }}</li>
+  <li><span id="areasocdeDetail">Areas OCDE:</span>{{ convocatoria.get_areasocde_values }}</li>
+
   <li>
     <span id="btnHermes"><a href="#" class="btn btn-warning" role="button">Registre su proyecto en HERMES</a></span>
-    <span id="btnApp"><a href="{{ convocatoria.paginaWebAplicacion }}" target="_blank" class="btn btn-primary" role="button">Aplicar a esta convocatoria</a></span>
+    <span id="btnApp"><a href="{{ convocatoria.paginaWebAplicacion }}" target="_blank" class="btn btn-primary" role="button">Más Información</a></span>
   </li>
 </div>
 </ul>
